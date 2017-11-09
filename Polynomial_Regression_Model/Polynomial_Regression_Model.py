@@ -1,3 +1,4 @@
+#Import Library
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -36,6 +37,8 @@ p_reg.fit(x_poly,y)
 Lgr_model2.fit(x_poly,y)
 
 #Step2.2 Apply Linear ==============
+
+#**********************************************************************************
 plt.scatter(x,y,color='Red')
 plt.plot(x,Lgr_model2.predict(p_reg.fit_transform(x)),color='blue')
 plt.title('position v/s salaries -Polynomial')
@@ -44,4 +47,18 @@ plt.ylabel('salaries')
 plt.show()
 #***********************************
 Lgr_model2.predict(p_reg.fit_transform(6.5))
+
+#*******For smothing graph (generate small points)*******************************
+x_grid=np.arange(min(x),max(x),0.1)
+x_grid=x_grid.reshape((len(x_grid),1))  #break into 90 steps
+#*******************************
+
+plt.scatter(x,y,color='Red')
+plt.plot(x_grid,Lgr_model2.predict(p_reg.fit_transform(x_grid)),color='blue')
+plt.title('position v/s salaries -Polynomial')
+plt.xlabel('position')
+plt.ylabel('salaries')
+plt.show()
+
+
 
